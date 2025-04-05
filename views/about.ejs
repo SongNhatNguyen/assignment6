@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+    <link rel="icon" type="image/png" href="/images/ironman.png">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .project-box:hover {
+            transform: scale(1.05);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            box-shadow: 0px 4px 20px rgba(0, 123, 255, 0.5);
+        }
+
+        .dropdown:focus-within .dropdown-content {
+            display: block;
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #1f2937;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 6px;
+            padding: 10px;
+            z-index: 100;
+            min-width: 150px; 
+        }
+
+        .dropdown:hover .dropdown-content,
+        .dropdown-content:hover {
+            display: block;
+        }
+
+        .active {
+            color: #3b82f6; 
+            font-weight: bold;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 4px 8px; 
+            border-radius: 4px; 
+            font-size: 14px; 
+            line-height: normal; 
+        }
+    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex flex-col min-h-screen bg-gray-900 text-gray-300">
+    <%- include('partials/navbar', { page: '/about' }) %>
+
+
+    <main class="container mx-auto py-20 flex-grow">
+        <div class="hero bg-gray-800 text-white py-10 px-6 rounded-lg shadow-lg flex justify-center items-center">
+            <div class="hero-content text-center">
+                <h1 class="text-4xl font-bold">About</h1>
+                <p class="mt-2 text-gray-400">~ Mostly all about me ~</p>
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 mt-10 items-center">
+            <div class="flex justify-center">
+                <img src="https://pm1.aminoapps.com/6479/8f4e19c39bf9c8a45c5998cdb5deb3a722d69674_hq.jpg" 
+                     alt="Profile Picture" 
+                     class="rounded-lg shadow-lg w-full md:w-3/4">
+            </div>
+            <div class="text-left">
+                <h2 class="text-2xl font-bold text-white">
+                    My name is Song Nhat Nguyen and currently studying in Seneca Polytechnic.</h2>
+                <p class="text-gray-400 mt-2">
+                    This project was created to serve my learning process in linking the components of a website together and is currently a process of learning WEB 311.
+                </p>
+                <p class="text-gray-400 mt-2">
+                    I love listening to music and reading books as well as being extremely curious about the world around me. Over the years of living, making friends and getting to know many people, I realized that their lives and mine have silent connections.
+                    
+                    Somehow, I learn from them and improve myself regardless of who they are or what class they are in. They are all human beings and individuals who have written their own stories, so no matter how sad or good the story is, I appreciate it all and see it as a lesson for myself.
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <%- include('partials/footer', { page: '/about' }) %>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404</title>
+    <link rel="icon" type="image/png" href="/images/ironman.png">
+    <link rel="stylesheet" href="/css/main.css" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .dropdown:focus-within .dropdown-content {
+            display: block;
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #1f2937;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 6px;
+            padding: 10px;
+            z-index: 100;
+            min-width: 150px; 
+        }
+
+        .dropdown:hover .dropdown-content,
+        .dropdown-content:hover {
+            display: block;
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen bg-gray-900 text-gray-300">
+    <%- include('partials/navbar', { page: '' }) %>
+
+    <main class="container mx-auto py-20 flex-grow">
+        <section class="bg-gray-800 text-white py-10 px-6 text-center rounded-lg shadow-lg flex flex-col items-center">
+            <h1 class="text-6xl font-bold text-red-500 mb-4 animate-bounce">404</h1>
+            <p class="text-xl text-gray-400"><%= message %></p>
+            <div class="mt-10 text-center text-gray-400 text-sm">
+                <p>Student Name: <%= studentName %></p>
+                <p>Student ID: <%= studentId %></p>
+                <p>Timestamp: <%= timestamp %></p>
+            </div>
+            <a href="/" class="mt-6 inline-block px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white rounded-md transition">Home</a>
+        </section>
+    </main>
+
+    <%- include('partials/footer', { page: '' }) %>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects</title>
+    <link rel="icon" type="image/png" href="/images/ironman.png">
+    <link rel="stylesheet" href="/css/main.css" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .project-box:hover {
+            transform: scale(1.05);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            box-shadow: 0px 4px 20px rgba(0, 123, 255, 0.5);
+        }
+
+        .dropdown:focus-within .dropdown-content {
+            display: block;
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #1f2937;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 6px;
+            padding: 10px;
+            z-index: 100;
+            min-width: 150px; 
+        }
+
+        .dropdown:hover .dropdown-content,
+        .dropdown-content:hover {
+            display: block;
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen bg-gray-900 text-gray-300">
+
+    <%- include('partials/navbar', { page: '/solutions/projects' }) %>
+
+    <main class="container mx-auto py-20 flex-grow">
+        <section class="bg-gray-800 text-white py-10 px-6 text-center rounded-lg shadow-lg">
+            <h1 class="text-4xl font-bold">Projects</h1>
+            <p class="mt-2 text-gray-400">There are 5 current projects right now in our database.</p>
+
+            <div class="mt-4 flex justify-center space-x-4">
+                <a href="/solutions/projects?sector=Industry" 
+                   class="px-4 py-2 rounded-md transition 
+                         <%= (sector === 'Industry') ? 'bg-blue-600 text-white' : 'bg-blue-600 hover:bg-blue-600 hover:text-black text-white' %>">
+                    Industry
+                </a>
+                <a href="/solutions/projects?sector=Transportation" 
+                   class="px-4 py-2 rounded-md transition 
+                         <%= (sector === 'Transportation') ? 'bg-blue-600 text-white' : 'bg-blue-600 hover:bg-blue-600 hover:text-black text-white' %>">
+                    Transportation
+                </a>
+                <a href="/solutions/projects?sector=Land Sinks" 
+                   class="px-4 py-2 rounded-md transition 
+                         <%= (sector === 'Land Sinks') ? 'bg-blue-600 text-white' : 'bg-blue-600 hover:bg-blue-600 hover:text-black text-white' %>">
+                    Land Sinks
+                </a>
+                <a href="/solutions/projects?sector=Electricity" 
+                class="px-4 py-2 rounded-md transition 
+                      <%= (sector === 'Electricity') ? 'bg-blue-600 text-white' : 'bg-blue-600 hover:bg-blue-600 hover:text-black text-white' %>">
+                    Electricity
+             </a>
+             <a href="/solutions/projects?sector=Food, Agriculture, and Land Use" 
+             class="px-4 py-2 rounded-md transition 
+                   <%= (sector === 'Food, Agriculture, and Land Use') ? 'bg-blue-600 text-white' : 'bg-blue-600 hover:bg-blue-600 hover:text-black text-white' %>">
+                    Food, Agriculture, and Land Use
+             </a>
+            </div>
+        </section>
+
+        <section class="mt-10">
+            <table class="w-full text-left border-collapse">
+                <tbody>
+                    <% projects.forEach(project => { %>
+                        <tr class="bg-gray-800 text-gray-300">
+                            <td class="px-2 py-2"><%= project.title %></td>
+                            <td class="px-2 py-1 text-xs">
+                                <a href="/solutions/projects?sector=<%= project.Sector.sector_name %>" 
+                                   class="px-3 py-0.5 bg-purple-600 hover:bg-blue-700 text-white rounded-md transition text-xs">
+                                    <%= project.Sector.sector_name %>
+                                </a>
+                            </td>                            
+                            <td class="px-4 py-2"><%= project.summary_short %></td>
+                            <td class="px-4 py-2">
+                                <div class="flex gap-2">
+                                  <a href="/solutions/projects/<%= project.id %>"
+                                     class="w-full text-center px-3 py-2 bg-red-600 hover:bg-red-700 text-white rounded-md transition font-semibold">
+                                      Details
+                                  </a>
+                                  <% if (session.user) { %>
+                                    <a href="/solutions/editProject/<%= project.id %>" 
+                                       class="w-full text-center px-3 py-2 bg-yellow-500 hover:bg-yellow-600 text-white rounded-md transition font-semibold">
+                                      Edit
+                                    </a>
+                                  <% } %>                                  
+                                </div>
+                              </td>                              
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <%- include('partials/footer', { page: '/solutions/projects' }) %>
+</body>
+</html>

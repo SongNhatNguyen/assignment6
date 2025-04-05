@@ -1,0 +1,37 @@
+<nav class="bg-gray-800 shadow-md w-full">
+    <div class="container mx-auto flex justify-between items-center p-4">
+      <div class="flex flex-col">
+        <a href="/" class="text-2xl font-bold text-blue-400">
+          Climate Solutions - Song Nhat Nguyen - 169284239
+        </a>
+        <span class="text-xl text-gray-400">
+          <%= timestamp %>
+        </span>
+      </div>
+  
+      <div class="flex space-x-6 items-center">
+        <a class="<%= (page == '/solutions/projects') ? 'text-blue-400 font-bold' : 'text-gray-300 hover:text-blue-400' %>" href="/solutions/projects">View Projects</a>
+        <a class="<%= (page == '/about') ? 'text-blue-400 font-bold' : 'text-gray-300 hover:text-blue-400' %>" href="/about">About</a>
+  
+        <% if (session.user) { %>
+          <details class="relative">
+            <summary class="cursor-pointer text-gray-300 hover:text-blue-400">Account: <%= session.user.userName %></summary>
+            <ul class="absolute right-0 bg-gray-700 text-white rounded shadow-lg p-2 space-y-2 z-50 mt-2">
+                <li><a class="<%= (page == '/solutions/addProject') ? 'text-blue-400 font-bold' : 'hover:text-blue-400' %>" href="/solutions/addProject">Add Project</a></li>
+                <li><a class="<%= (page == '/userHistory') ? 'text-blue-400 font-bold' : 'hover:text-blue-400' %>" href="/userHistory">User History</a></li>                
+              <li><a class="hover:text-blue-400" href="/logout">Log Out</a></li>
+            </ul>
+          </details>
+        <% } else { %>
+          <details class="relative">
+            <summary class="cursor-pointer text-gray-300 hover:text-blue-400">Account</summary>
+            <ul class="absolute right-0 bg-gray-700 text-white rounded shadow-lg p-2 space-y-2 z-50 mt-2">
+              <li><a class="<%= (page == '/login') ? 'text-blue-400 font-bold' : 'hover:text-blue-400' %>" href="/login">Login</a></li>
+              <li><a class="<%= (page == '/register') ? 'text-blue-400 font-bold' : 'hover:text-blue-400' %>" href="/register">Register</a></li>
+            </ul>
+          </details>
+        <% } %>
+      </div>
+    </div>
+  </nav>
+  

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Climate Solutions</title>
+  <link rel="icon" type="image/png" href="/images/ironman.png">
+  <link rel="stylesheet" href="/css/main.css" />
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .project-box:hover {
+      transform: scale(1.05);
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+      box-shadow: 0px 4px 20px rgba(0, 123, 255, 0.5);
+    }
+  </style>
+</head>
+<body class="flex flex-col min-h-screen bg-gray-900 text-gray-300">
+
+  <%- include('partials/navbar', { page: '/' }) %>
+
+  <main class="container mx-auto py-20 flex-grow">
+    <section class="bg-gray-800 text-white py-10 px-6 text-center rounded-lg shadow-lg">
+      <h1 class="text-4xl font-bold">Welcome to Climate Solutions</h1>
+      <p class="mt-2 text-gray-400">Browse our current collection of modern solutions to help fight Climate Change.</p>
+      <a href="/solutions/projects" class="mt-4 inline-block px-6 py-2 bg-blue-500 hover:bg-blue-600 hover:text-black text-white rounded-md transition">
+        Get Started
+      </a>
+    </section>
+
+    <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
+      <div class="bg-gray-800 shadow-lg p-4 rounded-lg project-box flex flex-col items-center text-center">
+        <img src="https://drawdown.org/sites/default/files/solutions/solution_farmlandrestoration01.jpg" class="w-full h-48 object-cover rounded-md" alt="Project Image">
+        <h2 class="text-xl font-bold mt-2 text-white">Abandoned Farmland Restoration</h2>
+        <p class="text-gray-400">Restoration can bring degraded farmland back into productivity and sequester carbon.</p>
+        <a href="/solutions/projects/1" class="mt-4 inline-block px-4 py-2 bg-blue-500 hover:bg-blue-600 hover:text-black text-white rounded-md transition">More Information</a>
+      </div>
+
+      <div class="bg-gray-800 shadow-lg p-4 rounded-lg project-box flex flex-col items-center text-center">
+        <img src="https://drawdown.org/sites/default/files/solutions2020/solution_alternativecement02.jpg" class="w-full h-48 object-cover rounded-md" alt="Project Image">
+        <h2 class="text-xl font-bold mt-2 text-white">Alternative Cement</h2>
+        <p class="text-gray-400">Reformulating cement production can reduce emissions by millions of metric tons each year.</p>
+        <a href="/solutions/projects/2" class="mt-4 inline-block px-4 py-2 bg-blue-500 hover:bg-blue-600 hover:text-black text-white rounded-md transition">More Information</a>
+      </div>
+
+      <div class="bg-gray-800 shadow-lg p-4 rounded-lg project-box flex flex-col items-center text-center">
+        <img src="https://drawdown.org/sites/default/files/solutions2020/solution_bicycle_infrastructure.jpg" class="w-full h-48 object-cover rounded-md" alt="Project Image">
+        <h2 class="text-xl font-bold mt-2 text-white">Bicycle Infrastructure</h2>
+        <p class="text-gray-400">Infrastructure is essential for supporting safe and abundant bicycle use.</p>
+        <a href="/solutions/projects/3" class="mt-4 inline-block px-4 py-2 bg-blue-500 hover:bg-blue-600 hover:text-black text-white rounded-md transition">More Information</a>
+      </div>
+    </section>
+  </main>
+
+  <%- include('partials/footer', { page: '/' }) %>
+</body>
+</html>
