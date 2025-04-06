@@ -1,5 +1,6 @@
 const express = require("express");
 const path = require("path");
+const helmet = require("helmet");
 const projectData = require("./modules/project.js");
 const authData = require("./modules/auth-service.js");
 const clientSessions = require("client-sessions");
@@ -13,11 +14,13 @@ const PORT = process.env.PORT || 8000;
 app.use(express.static(__dirname + '/public'));
 app.use(express.urlencoded({ extended: true }));
 
+app.use(helmet());
+
 app.use(clientSessions({
   cookieName: "session", 
   secret: "longRandomStringForEncryptingSession", 
-  duration: 2 * 60 * 1000, 
-  activeDuration: 1000 * 60 
+  duration: 2 * 60 * 1000000, 
+  activeDuration: 1000000 * 60 
 }));
 
 app.use((req, res, next) => {

@@ -50,21 +50,24 @@
         <table class="w-full table-auto border border-gray-700 text-sm md:text-base">
           <thead>
             <tr>
-              <th class="border-b border-gray-600">Login Date/Time</th>
+              <th class="border-b border-gray-600">Date/Time</th>
               <th class="border-b border-gray-600">Client Information</th>
             </tr>
           </thead>
           <tbody>
             <% if (session.user && session.user.loginHistory && session.user.loginHistory.length > 0) { %>
-              <% session.user.loginHistory.forEach(entry => { %>
+              <% session.user.loginHistory.forEach(entry => { 
+                   const date = new Date(entry.dateTime);
+                   const formattedDate = date.toDateString() + ' – ' + date.toTimeString();
+              %>
                 <tr>
-                  <td class="py-2 px-4 border-b border-gray-700"><%= entry.dateTime %></td>
+                  <td class="py-2 px-4 border-b border-gray-700"><%= formattedDate %></td>
                   <td class="py-2 px-4 border-b border-gray-700"><%= entry.userAgent %></td>
                 </tr>
               <% }) %>
             <% } else { %>
               <tr>
-                <td colspan="2" class="text-center py-4 text-gray-400">No login history available.</td>
+                <td colspan="2" class="text-center py-4 text-gray-400">No User History has been recorded</td>
               </tr>
             <% } %>
           </tbody>
