@@ -3,9 +3,8 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const Schema = mongoose.Schema;
 
-let User; // Will be initialized after connecting to MongoDB
+let User; 
 
-// Define schema
 const userSchema = new Schema({
     userName: {
         type: String,
@@ -19,7 +18,6 @@ const userSchema = new Schema({
     }]
 });
 
-// === Function 1: Initialize ===
 function initialize() {
     return new Promise((resolve, reject) => {
         let db = mongoose.createConnection(process.env.MONGODB);

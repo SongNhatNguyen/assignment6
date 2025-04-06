@@ -46,11 +46,13 @@
     <%- include('partials/navbar', { page: '' }) %>
 
     <main class="container mx-auto py-10 flex-grow">
-        <section class="hero bg-gray-800 text-white py-10 text-center rounded-lg shadow-lg">
-            <h1 class="text-4xl font-bold"><%= project.title %></h1>
-            <p class="mt-2 text-gray-400">Below, you will find detailed information about the project: <%= project.title %></p>
+        <section class="hero bg-gray-800 text-white py-10 text-center rounded-lg shadow-lg min-h-[160px]">
+            <div class="flex flex-col items-center justify-center text-center">
+              <h1 class="text-4xl font-bold"><%= project.title %></h1>
+              <p class="mt-2 text-gray-400">Below, you will find detailed information about the project: <%= project.title %></p>
+            </div>
         </section>
-
+          
         <section class="mt-10 flex flex-col md:flex-row items-center md:items-start space-y-6 md:space-y-0 md:space-x-10">
             <div class="md:w-1/2 w-full">
                 <img src="<%= project.feature_img_url %>" alt="Project Image" class="w-full h-auto rounded-lg shadow-md">
