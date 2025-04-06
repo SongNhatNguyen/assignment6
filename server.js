@@ -1,6 +1,5 @@
 const express = require("express");
 const path = require("path");
-const helmet = require("helmet");
 const projectData = require("./modules/project.js");
 const authData = require("./modules/auth-service.js");
 const clientSessions = require("client-sessions");
@@ -13,21 +12,6 @@ const PORT = process.env.PORT || 8000;
 
 app.use(express.static(__dirname + '/public'));
 app.use(express.urlencoded({ extended: true }));
-
-app.use(
-  helmet.contentSecurityPolicy({
-    directives: {
-      defaultSrc: ["'self'"],
-      imgSrc: ["'self'", "https:", "data:", "https://drawdown.org"],
-      scriptSrc: ["'self'", "https:"],
-      styleSrc: ["'self'", "https:", "'unsafe-inline'"],
-      fontSrc: ["'self'", "https:", "data:"],
-      objectSrc: ["'none'"],
-      upgradeInsecureRequests: [],
-    },
-  })
-);
-
 
 app.use(clientSessions({
   cookieName: "session", 
