@@ -43,9 +43,9 @@
 
   <main class="container mx-auto py-16 px-4 flex-grow">
     <section class="bg-gray-800 text-white py-10 px-6 text-center rounded-lg shadow-lg mb-10">
-      <h1 class="text-4xl font-bold mb-4">User Login History</h1>
+      <h1 class="text-4xl font-bold mb-4">Login History</h1>
       <p class="text-gray-400 text-lg">
-        Welcome <span class="font-semibold text-white"><%= session.user.userName %></span> | <%= session.user.email %>
+        User: <span class="font-semibold text-white"><%= session.user.userName %></span> | Email: <%= session.user.email %>
       </p>
     </section>
 
@@ -62,8 +62,18 @@
           <tbody>
             <% if (session.user && session.user.loginHistory && session.user.loginHistory.length > 0) { %>
               <% session.user.loginHistory.forEach(entry => { 
-                   const date = new Date(entry.dateTime);
-                   const formattedDate = date.toDateString() + ' – ' + date.toTimeString();
+                const date = new Date(entry.dateTime);
+                const formattedDate = date.toLocaleString('en-US', {
+                  timeZone: 'America/New_York',
+                  weekday: 'short',
+                  year: 'numeric',
+                  month: 'short',
+                  day: '2-digit',
+                  hour: '2-digit',
+                  minute: '2-digit',
+                  second: '2-digit',
+                  timeZoneName: 'long'
+                });
               %>
                 <tr>
                   <td class="text-left"><%= formattedDate %></td>
