@@ -36,7 +36,7 @@ function initialize() {
 function registerUser(userData) {
     return new Promise((resolve, reject) => {
         if (userData.password !== userData.password2) {
-            reject("Passwords do not match");
+            reject("Wrong Password");
         } else {
             bcrypt.hash(userData.password, 10)
                 .then(hash => {
@@ -46,14 +46,14 @@ function registerUser(userData) {
                         .then(() => resolve())
                         .catch(err => {
                             if (err.code === 11000) {
-                                reject("User Name already taken");
+                                reject("You are using an exists user name, try another one");
                             } else {
-                                reject("There was an error creating the user: " + err);
+                                reject("Try again we countered problem: " + err);
                             }
                         });
                 })
                 .catch(() => {
-                    reject("There was an error encrypting the password");
+                    reject("Encryptying passowrd failed");
                 });
         }
     });
@@ -65,7 +65,7 @@ function checkUser(userData) {
         User.find({ userName: userData.userName })
             .then(users => {
                 if (users.length === 0) {
-                    reject("Unable to find user: " + userData.userName);
+                    reject("User name too short: " + userData.userName);
                 } else {
                     bcrypt.compare(userData.password, users[0].password)
                         .then(result => {
@@ -83,15 +83,15 @@ function checkUser(userData) {
                                     { $set: { loginHistory: users[0].loginHistory } }
                                 )
                                     .then(() => resolve(users[0]))
-                                    .catch(err => reject("There was an error verifying the user: " + err));
+                                    .catch(err => reject("Failed to verify user name: " + err));
                             } else {
-                                reject("Incorrect Password for user: " + userData.userName);
+                                reject("Wrong Passowrd: " + userData.userName);
                             }
                         });
                 }
             })
             .catch(() => {
-                reject("Unable to find user: " + userData.userName);
+                reject("We have found no user name: " + userData.userName);
             });
     });
 }
