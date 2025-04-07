@@ -16,8 +16,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(clientSessions({
   cookieName: "session", 
   secret: "longRandomStringForEncryptingSession", 
-  duration: 2 * 60 * 1000000, 
-  activeDuration: 1000000 * 60 
+  duration: 2 * 60 * 10000, 
+  activeDuration: 10000 * 60 
 }));
 
 app.use((req, res, next) => {
